@@ -57,9 +57,9 @@ app.get("/update-cobj", (req, res) => {
 // ------------------------------------------------------------
 app.post("/update-cobj", async (req, res) => {
   // Dados vindos do formulário (***SUBSTITUIR PELAS PROPRIEDADES QUE VOCÊ CRIOU***)
-  const cargo = Array.isArray(req.body.cargo) ? req.body.carago[0] : req.body.cargo;
+  const cargo = Array.isArray(req.body.cargo) ? req.body.cargo[0] : req.body.cargo;
   const idade = Array.isArray(req.body.specie) ? req.body.idade[0] : req.body.idade;
-  const time atual = Array.isArray(req.body.timeatual) ? req.body.timeatual[0] : req.body.timeatual;
+  const time_atual = Array.isArray(req.body.time_atual) ? req.body.time_atual[0] : req.body.time_atual;
 
   try {
     // Chamada à API do HubSpot para criar um registro
@@ -71,7 +71,7 @@ app.post("/update-cobj", async (req, res) => {
           // das propriedades do Custom Object (***SUBSTITUIR PELO OS QUE VOCÊ CRIOU***)
           cargo: cargo,
           idade: idade,
-          timeatual: timeatual,
+          time_atual: time_atual,
         },
       },
       {
@@ -98,7 +98,7 @@ app.get("/", async (req, res) => {
   try {
     // Busca registros do Custom Object (***SUBSTITUIR NO FINAL DA URL PELO OS QUE VOCÊ CRIOU***)
     const response = await axios.get(
-      `https://api.hubapi.com/crm/v3/objects/${CUSTOM_OBJECT}?properties=cargo,idade,timeatual`,
+      `https://api.hubapi.com/crm/v3/objects/${CUSTOM_OBJECT}?properties=cargo,idade,time_atual`,
       {
         headers: {
           Authorization: `Bearer ${HUBSPOT_TOKEN}`,
